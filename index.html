@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Interaktywny Przycisk Subscribe</title>
+    <style>
+        body {
+            background-color: #121212;
+            color: white;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            flex-direction: column;
+            font-family: Arial, sans-serif;
+        }
+        #subscribe {
+            background-color: red;
+            color: white;
+            border: none;
+            padding: 15px 30px;
+            font-size: 20px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        #subscribe:hover {
+            background-color: darkred;
+        }
+        #loadingBar {
+            display: none;
+            width: 100%;
+            height: 20px;
+            background-color: green;
+            margin-top: 20px;
+            animation: loading 10s forwards;
+        }
+        @keyframes loading {
+            from { width: 0; }
+            to { width: 100%; }
+        }
+        #loadingText {
+            display: none;
+            color: white;
+            margin-top: 5px;
+        }
+        #discord {
+            display: none;
+            background-color: blue;
+            color: white;
+            border: none;
+            padding: 15px 30px;
+            font-size: 20px;
+            cursor: pointer;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+
+    <button id="subscribe">Subscribe</button>
+    <div id="loadingBar"></div>
+    <div id="loadingText">Wczytywanie...</div>
+    <button id="discord">Discord</button>
+
+    <script>
+        document.getElementById('subscribe').onclick = function() {
+            window.open('https://www.youtube.com/@user06692fnf?sub_confirmation=1', '_blank');
+            document.getElementById('loadingBar').style.display = 'block';
+            document.getElementById('loadingText').style.display = 'block';
+            setTimeout(function() {
+                document.getElementById('subscribe').style.display = 'none';
+                document.getElementById('loadingBar').style.display = 'none';
+                document.getElementById('loadingText').style.display = 'none';
+                document.getElementById('discord').style.display = 'block';
+            }, 10000);
+        };
+
+        document.getElementById('discord').onclick = function() {
+            window.location.href = 'https://discord.gg/fDwmXmKPwR';
+        };
+    </script>
+
+</body>
+</html>
